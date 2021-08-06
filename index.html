@@ -10,7 +10,8 @@
         border: 2px solid orange;
       }
     </style>
-    <script src="tooltip.js"></script>
+    <script src="tooltip.js" defer></script>
+    <script src="confirm-link.js" defer></script>
   </head>
   <body>
     <p>
@@ -21,6 +22,12 @@
     </p>
     <udemy-course-tooltip></udemy-course-tooltip>
     <div>This doesn't get the web component styles!</div>
-    <a href="https://www.google.com" target="_blank">Google</a>
+    <a
+      is="udemy-course-confirm-link"
+      href="https://www.google.com"
+      target="_blank"
+    >
+      Google
+    </a>
   </body>
 </html>
