@@ -6,8 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web Components</title>
     <style>
-      div {
-        border: 2px solid orange;
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        --color-primary: #84c8df;
+        font-family: sans-serif;
       }
     </style>
     <script src="tooltip.js" defer></script>
@@ -15,13 +20,15 @@
   </head>
   <body>
     <p>
-      <udemy-course-tooltip text="Web Components is a set of standards.">
-        Web Components
+      <udemy-course-tooltip
+        class="important"
+        text="Web Components is a set of standards."
+      >
+        <span class="highlight">Web Components</span>
       </udemy-course-tooltip>
       are awesome!
     </p>
     <udemy-course-tooltip></udemy-course-tooltip>
-    <div>This doesn't get the web component styles!</div>
     <a
       is="udemy-course-confirm-link"
       href="https://www.google.com"
