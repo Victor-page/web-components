@@ -1,43 +1,40 @@
-class Tooltip extends HTMLElement {
-  constructor() {
-    super();
-    this._tooltipContainer;
-    this._tooltipText = 'Default text';
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.innerHTML = `
-      <style>
-        div {
-          background-color: black;
-          color: white;
-          position: absolute;
-          z-index: 1;
-        }
-      </style>
-      <slot>Some default</slot>
-      <span> (?)</span>
-    `;
-  }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Web Components</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-  connectedCallback() {
-    if (this.hasAttribute('text')) {
-      this._tooltipText = this.getAttribute('text');
-    }
-    const tooltipIcon = this.shadowRoot.querySelector('span');
-    tooltipIcon.addEventListener('mouseenter', this._showTooltip.bind(this));
-    tooltipIcon.addEventListener('mouseleave', this._hideTooltip.bind(this));
-    this.shadowRoot.appendChild(tooltipIcon);
-    this.style.position = 'relative';
-  }
-
-  _showTooltip() {
-    this._tooltipContainer = document.createElement('div');
-    this._tooltipContainer.textContent = this._tooltipText;
-    this.shadowRoot.appendChild(this._tooltipContainer);
-  }
-
-  _hideTooltip() {
-    this.shadowRoot.removeChild(this._tooltipContainer);
-  }
-}
-
-customElements.define('udemy-course-tooltip', Tooltip);
+      html {
+        --color-primary: #84c8df;
+        font-family: sans-serif;
+      }
+    </style>
+    <script src="tooltip.js" defer></script>
+    <script src="confirm-link.js" defer></script>
+  </head>
+  <body>
+    <p>
+      <udemy-course-tooltip
+        class="important"
+        text="Web Components is a set of standards."
+      >
+        <span class="highlight">Web Components</span>
+      </udemy-course-tooltip>
+      are awesome!
+    </p>
+    <udemy-course-tooltip></udemy-course-tooltip>
+    <a
+      is="udemy-course-confirm-link"
+      href="https://www.google.com"
+      target="_blank"
+    >
+      Google
+    </a>
+  </body>
+</html>
