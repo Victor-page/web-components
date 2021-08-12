@@ -17,6 +17,7 @@
     </style>
     <script src="tooltip.js" defer></script>
     <script src="confirm-link.js" defer></script>
+    <script src="modal.js" defer></script>
   </head>
   <body>
     <p>
@@ -36,5 +37,19 @@
     >
       Google
     </a>
+
+    <udemy-course-modal>
+      <p>With your confirmation you agree to pay the full amount!</p>
+    </udemy-course-modal>
+    <p>Please confirm your choice.</p>
+    <button>Show Details & Confirm</button>
+
+    <script>
+      const confirmButton = document.querySelector("button");
+      const modal = document.querySelector("udemy-course-modal");
+      confirmButton.addEventListener("click", () => {
+        modal.setAttribute("opened", "");
+      });
+    </script>
   </body>
 </html>
